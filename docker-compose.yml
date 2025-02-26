@@ -1,0 +1,9 @@
+services:
+  andre-paiva-portfolio:
+    build: .
+    container_name: andrepaiva.dev-new
+    ports:
+      - "1411:3000"
+    networks:
+      - dreamteam-network
+    restart: always

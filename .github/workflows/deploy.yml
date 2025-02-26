@@ -1,0 +1,40 @@
+name: 🚀 Deploy
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  deploy:
+    name: "Deploy to production"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup ssh
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+          cat >>~/.ssh/config << END
+          Host prod
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+
+      - name: Cloning repository on production
+        run: ssh prod 'cd portfolio-v2 && git fetch && git reset --hard origin/main'
+
+      - name: Deploy App with Docker Compose
+        run: ssh prod 'cd dreamteam/DreamTeam && docker compose -f docker-compose.yml up -d --build'
