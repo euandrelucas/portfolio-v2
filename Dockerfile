@@ -9,7 +9,6 @@ COPY package*.json ./
 COPY yarn.lock ./
 
 # Instala dependências
-RUN npm install --global yarn
 RUN yarn install
 
 # Copia o restante dos arquivos
@@ -36,4 +35,4 @@ RUN yarn install --production --frozen-lockfile
 EXPOSE 1411
 
 # Comando para iniciar o servidor em produção
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
