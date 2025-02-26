@@ -29,9 +29,6 @@ COPY --from=builder /usr/src/app/.next .next
 COPY --from=builder /usr/src/app/package*.json ./
 COPY --from=builder /usr/src/app/next.config.mjs ./
 
-# Instala o yarn
-RUN npm install --global yarn
-
 # Instala apenas dependências de produção
 RUN yarn install --production --frozen-lockfile
 
