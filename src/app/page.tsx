@@ -414,7 +414,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://github.com/euandrelucas"
+                href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center p-6 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
