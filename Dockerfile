@@ -26,7 +26,8 @@ WORKDIR /usr/src/app
 # Copia apenas os arquivos necessários do estágio anterior
 COPY --from=builder /usr/src/app/.next .next
 COPY --from=builder /usr/src/app/package*.json ./
-COPY --from=builder /usr/src/app/next.config.mjs ./
+COPY --from=builder /usr/src/app/yarn.lock ./
+COPY --from=builder /usr/src/app/next.config.ts ./
 
 # Instala apenas dependências de produção
 RUN yarn install --production --frozen-lockfile
