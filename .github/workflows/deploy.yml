@@ -37,4 +37,4 @@ jobs:
         run: ssh prod 'cd portfolio-v2 && git fetch && git reset --hard origin/master'
 
       - name: Deploy App with Docker Compose
-        run: ssh prod 'cd dreamteam/DreamTeam && docker compose -f docker-compose.yml up -d --build'
+        run: ssh prod 'cd portfolio-v2 && docker compose -f docker-compose.yml up -d --build'
