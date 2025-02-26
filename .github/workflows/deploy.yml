@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: "Deploy to production"
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -34,7 +34,7 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}
 
       - name: Cloning repository on production
-        run: ssh prod 'cd portfolio-v2 && git fetch && git reset --hard origin/main'
+        run: ssh prod 'cd portfolio-v2 && git fetch && git reset --hard origin/master'
 
       - name: Deploy App with Docker Compose
         run: ssh prod 'cd dreamteam/DreamTeam && docker compose -f docker-compose.yml up -d --build'
