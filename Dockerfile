@@ -24,6 +24,7 @@ FROM node:20-slim
 WORKDIR /usr/src/app
 
 # Copia apenas os arquivos necessários do estágio anterior
+COPY --from=builder /usr/src/app/src ./src
 COPY --from=builder /usr/src/app/.next .next
 COPY --from=builder /usr/src/app/package*.json ./
 COPY --from=builder /usr/src/app/yarn.lock ./
