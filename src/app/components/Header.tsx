@@ -54,15 +54,6 @@ const Header = () => {
             </Link>
           </nav>
 
-          <div className="hidden md:block">
-            <button
-              disabled={true}
-              className="bg-white text-blue-600 hover:bg-blue-100 py-2 px-4 rounded-full transition duration-300 font-medium"
-            >
-              Login
-            </button>
-          </div>
-
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -103,12 +94,6 @@ const Header = () => {
             >
               Contato
             </Link>
-            <button
-              disabled={true}
-              className="bg-white text-blue-600 hover:bg-blue-100 py-2 px-4 rounded-full transition duration-300 font-medium text-center mt-2"
-            >
-              Login
-            </button>
           </nav>
         </div>
       )}
