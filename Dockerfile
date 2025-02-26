@@ -23,8 +23,13 @@ FROM node:20-slim
 # Define o diretório de trabalho
 WORKDIR /usr/src/app
 
-# Copia apenas todos os arquivos necessários
-COPY --from=builder /usr/src/app/* ./*
+# Copia apenas os arquivos necessários do estágio anterior
+COPY --from=builder /usr/src/app/.next .next
+COPY --from=builder /usr/src/app/package*.json ./
+COPY --from=builder /usr/src/app/yarn.lock ./
+COPY --from=builder /usr/src/app/next.config.ts ./
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/.env ./
 
 # Instala apenas dependências de produção
 RUN yarn install --production --frozen-lockfile
