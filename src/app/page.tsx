@@ -8,6 +8,8 @@ import {
   Github,
   Linkedin,
   Mail,
+  Code,
+  ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -68,6 +70,27 @@ export default function Home() {
         image: "/projetos/dreamteam.png",
         link: "https://dreamteam.futbol",
       },
+      {
+        title: "Gol Website Remake",
+        description:
+          "Remake do site do Gol Linhas Aereas, desenvolvido como projeto pessoal para praticar habilidades de front-end e design responsivo.",
+        image: "/projetos/gol.jpeg",
+        link: "https://gol.andrepaiva.dev",
+      },
+      {
+        title: "Website da Noyevel",
+        description:
+          "Desenvolvi o site institucional da Noyevel, a startup da qual sou CEO e fundador, com o objetivo de apresentar a empresa, nossa visão e os projetos que estamos construindo. O site foi feito com foco em performance, responsividade e uma identidade visual marcante, refletindo o espírito criativo e inovador da Noyevel.",
+        image: "/projetos/noyevel.jpeg",
+        link: "https://noyevel.com",
+      },
+      {
+        title: "Website da Rio Bot",
+        description:
+          "Desenvolvi o site da Rio Bot, um projeto da Noyevel que oferece soluções inteligentes para servidores no Discord. O site foi criado com o objetivo de apresentar o bot ao público de forma clara e atrativa, reunindo informações sobre comandos, planos premium, tutoriais de uso e páginas institucionais como termos de uso e política de privacidade.",
+        image: "/projetos/rio.jpeg",
+        link: "https://rio.andrepaiva.dev",
+      },
     ];
 
     setProjects(sampleProjects);
@@ -101,6 +124,7 @@ export default function Home() {
     }
 
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [displayText, isDeleting, currentTextIndex]);
 
   const toggleExpand = (index: number) => {
@@ -111,62 +135,116 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-800">
-      {/* Hero Section */}
-      <header className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/placeholder.svg?height=500&width=1000')] bg-cover bg-center"></div>
+    <div className="min-h-screen bg-white text-slate-800">
+      {/* Hero Section - Versão Melhorada */}
+      <header className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-indigo-700 to-purple-800 text-white">
+        {/* Background com efeito de partículas */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 opacity-10">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full bg-white"
+                style={{
+                  width: `${Math.random() * 8 + 2}px`,
+                  height: `${Math.random() * 8 + 2}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.5 + 0.3,
+                  animation: `float ${
+                    Math.random() * 10 + 10
+                  }s linear infinite`,
+                  animationDelay: `${Math.random() * 10}s`,
+                }}
+              ></div>
+            ))}
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
         </div>
-        <div className="container mx-auto px-6 py-20">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+
+        <div className="container mx-auto px-6 py-24 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="md:w-1/2 text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                Olá, me chamo <span className="text-blue-300">André Paiva</span>
-                !
+              <div className="inline-block px-4 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                Desenvolvedor Full Stack
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Olá, me chamo{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
+                  André Paiva
+                </span>
               </h1>
-              <p className="text-xl md:text-2xl mb-6">
+              <p className="text-xl md:text-2xl mb-6 font-light">
                 Sou um{" "}
-                <span className="font-semibold relative">
+                <span className="font-medium relative">
                   <span className="inline-block min-h-[1.5em] after:content-['|'] after:ml-1 after:animate-blink">
                     {displayText}
                   </span>
                 </span>
               </p>
-              <p className="text-lg opacity-90 mb-8 max-w-lg mx-auto md:mx-0">
+              <p className="text-lg opacity-90 mb-8 max-w-lg mx-auto md:mx-0 font-light">
                 Apaixonado por criar soluções eficientes e inovadoras que
                 transformam ideias em realidade.
               </p>
-              <div className="flex gap-4 justify-center md:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <Link
                   href="/#contact"
-                  className="px-6 py-3 bg-white text-blue-700 rounded-full font-medium hover:bg-blue-50 transition-colors shadow-lg"
+                  className="px-6 py-3 bg-white text-blue-700 rounded-full font-medium hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center"
                 >
                   Entre em contato
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
                 <Link
                   href="/#projects"
-                  className="px-6 py-3 bg-transparent border border-white rounded-full font-medium hover:bg-white/10 transition-colors"
+                  className="px-6 py-3 bg-blue-600/30 backdrop-blur-sm border border-white/30 rounded-full font-medium hover:bg-blue-600/50 transition-all duration-300 flex items-center"
                 >
                   Ver projetos
+                  <Code className="ml-2 h-4 w-4" />
                 </Link>
               </div>
+
+              <div className="flex gap-4 mt-10 justify-center md:justify-start">
+                <a
+                  href="https://github.com/euandrelucas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/andretpaiva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  <Linkedin className="h-6 w-6" />
+                </a>
+                <a
+                  href="mailto:contato@andrepaiva.dev"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  <Mail className="h-6 w-6" />
+                </a>
+              </div>
             </div>
-            <div className="md:w-1/3 flex justify-center">
+
+            <div className="md:w-2/5 flex justify-center">
               <div className="relative w-64 h-64 md:w-80 md:h-80">
-                <div className="absolute inset-0 rounded-full bg-blue-400/30 animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-30 blur-xl animate-pulse"></div>
+                <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-50 blur-sm"></div>
                 <Image
                   src="/profile.png"
                   alt="André Paiva"
                   width={400}
                   height={400}
-                  className="rounded-full border-4 border-white shadow-xl relative z-10 object-cover"
+                  className="rounded-full border-4 border-white/30 shadow-2xl relative z-10 object-cover"
                   priority
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </header>
 
       <main className="container mx-auto px-6 py-16">
@@ -179,25 +257,46 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="relative max-w-4xl mx-auto">
+            {/* Linha do tempo vertical */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-blue-200 transform md:translate-x-px"></div>
+
             {experiences.length > 0 ? (
-              experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100"
-                >
-                  <h3 className="text-xl font-bold text-blue-700">
-                    {exp?.title}
-                  </h3>
-                  <p className="text-slate-600 font-medium mb-3">
-                    {exp?.company} •{" "}
-                    <span className="text-slate-500">{exp?.period}</span>
-                  </p>
-                  <p className="text-slate-700">{exp?.description}</p>
-                </div>
-              ))
+              <div className="space-y-12">
+                {experiences.map((exp, index) => (
+                  <div
+                    key={index}
+                    className={`relative flex flex-col md:flex-row ${
+                      index % 2 === 0 ? "md:flex-row-reverse" : ""
+                    }`}
+                  >
+                    {/* Círculo na linha do tempo */}
+                    <div className="absolute left-0 md:left-1/2 top-0 w-5 h-5 rounded-full bg-blue-600 border-4 border-blue-100 transform -translate-x-2 md:-translate-x-2.5 shadow-md"></div>
+
+                    {/* Conteúdo */}
+                    <div
+                      className={`flex-1 md:w-1/2 ${
+                        index % 2 === 0
+                          ? "md:pr-12 pl-8 md:pl-0"
+                          : "md:pl-12 pl-8"
+                      }`}
+                    >
+                      <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-slate-100 transform hover:-translate-y-1">
+                        <h3 className="text-xl font-bold text-blue-700">
+                          {exp?.title}
+                        </h3>
+                        <p className="text-slate-600 font-medium mb-3">
+                          {exp?.company} •{" "}
+                          <span className="text-slate-500">{exp?.period}</span>
+                        </p>
+                        <p className="text-slate-700">{exp?.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : (
-              <div className="col-span-1 lg:col-span-2 flex justify-center py-10">
+              <div className="flex justify-center py-10">
                 <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-700"></div>
               </div>
             )}

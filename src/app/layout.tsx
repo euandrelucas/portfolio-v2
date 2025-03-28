@@ -1,9 +1,10 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Geist, Azeret_Mono as Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,13 +46,21 @@ export const metadata: Metadata = {
     title: "André Paiva | Desenvolvedor Full Stack",
     description:
       "Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e eficientes. Confira meu portfólio e blog sobre tecnologia.",
+    images: [
+      {
+        url: "https://andrepaiva.dev/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "André Paiva - Desenvolvedor Full Stack",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "André Paiva | Desenvolvedor Full Stack",
     description:
       "Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e eficientes. Confira meu portfólio e blog sobre tecnologia.",
-    images: ["https://andrepaiva.dev/profile.png"],
+    images: ["https://andrepaiva.dev/twitter-image.jpg"],
     creator: "@andrepaivadev",
   },
   robots: {
@@ -79,11 +88,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <Script
+          defer
+          data-domain="andrepaiva.dev"
+          src="https://plausible.noyevel.com/js/script.js"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        {children}
+        <div className="pt-16">{children}</div>
         <Footer />
       </body>
     </html>

@@ -1,7 +1,15 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { Search, Calendar, Tag, ArrowRight } from "lucide-react";
+import {
+  Search,
+  Calendar,
+  Tag,
+  ArrowRight,
+  BookOpen,
+  Filter,
+  X,
+} from "lucide-react";
 
 interface Post {
   slug: string;
@@ -22,6 +30,7 @@ export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [categories, setCategories] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -82,20 +91,49 @@ export default function Blog() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 md:py-24">
-        <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-indigo-700 to-purple-800 text-white py-20 md:py-28">
+        {/* Background com efeito de partículas */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 opacity-10">
+            {[...Array(15)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full bg-white"
+                style={{
+                  width: `${Math.random() * 8 + 2}px`,
+                  height: `${Math.random() * 8 + 2}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.5 + 0.3,
+                  animation: `float ${
+                    Math.random() * 10 + 10
+                  }s linear infinite`,
+                  animationDelay: `${Math.random() * 10}s`,
+                }}
+              ></div>
+            ))}
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+              <BookOpen className="w-4 h-4 mr-2" />
+              Artigos e Tutoriais
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Blog
             </h1>
-            <p className="text-xl opacity-90 mb-8">
+            <p className="text-xl opacity-90 mb-8 font-light">
               Compartilhando conhecimento, experiências e reflexões sobre
               desenvolvimento, tecnologia e inovação.
             </p>
 
             <div className="relative max-w-xl mx-auto">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-white/70" />
               </div>
               <input
@@ -103,23 +141,87 @@ export default function Blog() {
                 placeholder="Buscar artigos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full py-3 pl-10 pr-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30"
+                className="w-full py-3 pl-12 pr-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
               />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-white/70 hover:text-white"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       <main className="container mx-auto px-6 py-12">
+        {/* Filtros de categoria */}
         {categories.length > 0 && (
           <div className="mb-10">
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="md:hidden mb-4">
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="w-full flex items-center justify-between px-4 py-3 bg-blue-50 rounded-lg text-blue-700 font-medium"
+              >
+                <span className="flex items-center">
+                  <Filter className="w-4 h-4 mr-2" />
+                  {selectedCategory
+                    ? `Categoria: ${selectedCategory}`
+                    : "Filtrar por categoria"}
+                </span>
+                {showFilters ? (
+                  <X className="w-4 h-4" />
+                ) : (
+                  <ArrowRight className="w-4 h-4" />
+                )}
+              </button>
+
+              {showFilters && (
+                <div className="mt-2 p-4 bg-white rounded-lg shadow-lg border border-slate-100">
+                  <div className="flex flex-col space-y-2">
+                    <button
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        setShowFilters(false);
+                      }}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors text-left ${
+                        selectedCategory === null
+                          ? "bg-blue-600 text-white"
+                          : "bg-blue-50 text-slate-700 hover:bg-blue-100"
+                      }`}
+                    >
+                      Todos
+                    </button>
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          setSelectedCategory(category);
+                          setShowFilters(false);
+                        }}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors text-left ${
+                          selectedCategory === category
+                            ? "bg-blue-600 text-white"
+                            : "bg-blue-50 text-slate-700 hover:bg-blue-100"
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="hidden md:flex flex-wrap gap-2 justify-center">
               <button
                 onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedCategory === null
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-slate-700 hover:bg-slate-100"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "bg-blue-50 text-slate-700 hover:bg-blue-100"
                 }`}
               >
                 Todos
@@ -128,10 +230,10 @@ export default function Blog() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                     selectedCategory === category
-                      ? "bg-blue-600 text-white"
-                      : "bg-white text-slate-700 hover:bg-slate-100"
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-blue-50 text-slate-700 hover:bg-blue-100"
                   }`}
                 >
                   {category}
@@ -141,6 +243,7 @@ export default function Blog() {
           </div>
         )}
 
+        {/* Estado de carregamento */}
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array(6)
@@ -165,7 +268,7 @@ export default function Blog() {
             {filteredPosts.map((post) => (
               <article
                 key={post.slug}
-                className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full"
+                className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col h-full border border-slate-100"
               >
                 <div className="p-6 flex flex-col flex-grow">
                   {post.frontmatter.category && (
@@ -194,10 +297,10 @@ export default function Blog() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors mt-auto"
+                    className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors mt-auto group"
                   >
                     Ler artigo completo
-                    <ArrowRight className="ml-1 w-4 h-4" />
+                    <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </article>
@@ -205,7 +308,10 @@ export default function Blog() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="bg-white rounded-xl shadow-md p-10 max-w-lg mx-auto">
+            <div className="bg-white rounded-xl shadow-md p-10 max-w-lg mx-auto border border-slate-100">
+              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-8 h-8 text-blue-500" />
+              </div>
               <h2 className="text-2xl font-bold text-slate-800 mb-4">
                 Nenhum resultado encontrado
               </h2>
@@ -218,7 +324,7 @@ export default function Blog() {
                   setSearchQuery("");
                   setSelectedCategory(null);
                 }}
-                className="px-6 py-2 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors"
+                className="px-6 py-2.5 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors shadow-md"
               >
                 Limpar filtros
               </button>
@@ -228,7 +334,10 @@ export default function Blog() {
 
         {!loading && posts.length === 0 && (
           <div className="text-center py-16">
-            <div className="bg-white rounded-xl shadow-md p-10 max-w-lg mx-auto">
+            <div className="bg-white rounded-xl shadow-md p-10 max-w-lg mx-auto border border-slate-100">
+              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <BookOpen className="w-8 h-8 text-blue-500" />
+              </div>
               <h2 className="text-2xl font-bold text-slate-800 mb-4">
                 Ainda não há artigos publicados
               </h2>
