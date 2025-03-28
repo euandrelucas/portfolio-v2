@@ -63,25 +63,29 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex space-x-1">
-            {["Início", "Blog", "Projetos", "Contato"].map((item, index) => (
-              <Link
-                key={item}
-                href={
-                  index === 0
-                    ? "/"
-                    : index === 1
-                    ? "/blog"
-                    : `/#${item.toLowerCase()}`
-                }
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  scrolled
-                    ? "text-slate-700 hover:text-blue-700 hover:bg-blue-50"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {item}
-              </Link>
-            ))}
+            {["Início", "Sobre", "Blog", "Projetos", "Contato"].map(
+              (item, index) => (
+                <Link
+                  key={item}
+                  href={
+                    index === 0
+                      ? "/"
+                      : index === 1
+                      ? "/sobre"
+                      : index === 2
+                      ? "/blog"
+                      : `/#${item.toLowerCase()}`
+                  }
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    scrolled
+                      ? "text-slate-700 hover:text-blue-700 hover:bg-blue-50"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  {item}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="md:hidden">
@@ -110,26 +114,30 @@ const Header = () => {
           }`}
         >
           <nav className="flex flex-col space-y-2">
-            {["Início", "Blog", "Projetos", "Contato"].map((item, index) => (
-              <Link
-                key={item}
-                href={
-                  index === 0
-                    ? "/"
-                    : index === 1
-                    ? "/blog"
-                    : `/#${item.toLowerCase()}`
-                }
-                className={`px-4 py-3 rounded-lg transition-all duration-300 ${
-                  scrolled
-                    ? "hover:bg-blue-50 hover:text-blue-700"
-                    : "hover:bg-white/10"
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
+            {["Início", "Sobre", "Blog", "Projetos", "Contato"].map(
+              (item, index) => (
+                <Link
+                  key={item}
+                  href={
+                    index === 0
+                      ? "/"
+                      : index === 1
+                      ? "/sobre"
+                      : index === 2
+                      ? "/blog"
+                      : `/#${item.toLowerCase()}`
+                  }
+                  className={`px-4 py-3 rounded-lg transition-all duration-300 ${
+                    scrolled
+                      ? "hover:bg-blue-50 hover:text-blue-700"
+                      : "hover:bg-white/10"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              )
+            )}
           </nav>
         </div>
       )}
