@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">🌐 andrepaiva.dev</h1>
 
-## Getting Started
+<p align="center">
+  Meu portfólio pessoal — desenvolvido com Next.js, TypeScript e Tailwind CSS — com seções sobre mim, projetos, um mini blog com comentários e integração com o LinkedIn.
+</p>
 
-First, run the development server:
+<p align="center">
+  <a href="https://andrepaiva.dev"><img src="https://img.shields.io/badge/site-online-8b5cf6?style=for-the-badge&logo=vercel"></a>
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js"></a>
+  <a href="https://typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript&logoColor=white"></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></a>
+</p>
+
+---
+
+## ✨ Sobre o Projeto
+
+Este é o código-fonte do meu site pessoal **[andrepaiva.dev](https://andrepaiva.dev)**.  
+Aqui você encontra:
+
+- 🧑‍💻 Uma apresentação sobre mim, minhas experiências e trajetória
+- 📂 Um portfólio de projetos com descrição e links
+- 📝 Um blog leve com sistema de comentários
+- 🔗 Integração com meu LinkedIn para exibir experiências
+
+O site foi feito com foco em performance, identidade visual própria e facilidade de atualização.
+
+---
+
+## 🚀 Tecnologias
+
+- **Next.js** com **App Router**
+- **TypeScript**
+- **Tailwind CSS**
+- **Shadcn/UI**
+- **MDX** para blog
+- **Edge runtime** otimizado para Vercel
+- Comentários com **@vercel/kv**, **Upstash**, ou **planos futuros de SQLite**
+
+---
+
+## 📦 Rodando localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/euandrelucas/portfolio-v2.git
+cd portfolio-v2
+```
+
+### 2. Instale as dependências
+
+```bash
+npm install
+# ou
+yarn
+```
+
+### 3. Inicie o servidor de desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Inspiração e Conceito
 
-## Learn More
+A ideia do site é ser mais do que um portfólio:  
+Um espaço vivo onde compartilho conhecimento, mantenho meus projetos atualizados e crio conexões com a comunidade tech.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🪪 Licença
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Distribuído sob a licença MIT.  
+Veja [`LICENSE`](./LICENSE) para mais informações.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🙋‍♂️ Autor
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feito com 💙 por [André Paiva](https://github.com/euandrelucas)
