@@ -7,34 +7,23 @@ on:
 
 jobs:
   deploy:
-    name: "Deploy to production"
+    name: Deploy to Cloudflare Workers
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Setup ssh
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/key
-          chmod 600 ~/.ssh/key
-          cat >>~/.ssh/config << END
-          Host prod
-            HostName $SSH_HOST
-            User $SSH_USER
-            Port $SSH_PORT
-            IdentityFile ~/.ssh/key
-            StrictHostKeyChecking no
-          END
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and Deploy to Cloudflare Workers
+        run: npm run deploy
         env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-
-      - name: Cloning repository on production
-        run: ssh prod 'cd portfolio-v2 && git fetch && git reset --hard origin/master'
-
-      - name: Deploy App with Docker Compose
-        run: ssh prod 'cd portfolio-v2 && docker compose -f docker-compose.yml up -d --build'
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
