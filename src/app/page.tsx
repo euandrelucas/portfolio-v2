@@ -63,13 +63,13 @@ export default function Home() {
         image: "/projetos/ginga.webp",
         link: "https://ginga.gg/",
       },
-      {
-        title: "DreamTeam",
-        description:
-          "O DreamTeam é um simulador de futebol feito por brasileiros apaixonados por futebol. Com cartas únicas e originais de jogadores e clubes brasileiros, são mais de 1300 cartas colecionáveis (incluindo Pelé, Arrascaeta, Hulk, Ronaldinho e muito mais!) para que você possa fazer o seu time dos sonhos. Então venha em busca de fazer o melhor time do mundo!",
-        image: "/projetos/dreamteam.png",
-        link: "https://dreamteam.futbol",
-      },
+      // {
+      //   title: "DreamTeam",
+      //   description:
+      //     "O DreamTeam é um simulador de futebol feito por brasileiros apaixonados por futebol. Com cartas únicas e originais de jogadores e clubes brasileiros, são mais de 1300 cartas colecionáveis (incluindo Pelé, Arrascaeta, Hulk, Ronaldinho e muito mais!) para que você possa fazer o seu time dos sonhos. Então venha em busca de fazer o melhor time do mundo!",
+      //   image: "/projetos/dreamteam.png",
+      //   link: "https://dreamteam.futbol",
+      // },
       {
         title: "Gol Website Remake",
         description:
@@ -89,7 +89,7 @@ export default function Home() {
         description:
           "Desenvolvi o site da Rio Bot, um projeto da Noyevel que oferece soluções inteligentes para servidores no Discord. O site foi criado com o objetivo de apresentar o bot ao público de forma clara e atrativa, reunindo informações sobre comandos, planos premium, tutoriais de uso e páginas institucionais como termos de uso e política de privacidade.",
         image: "/projetos/rio.jpeg",
-        link: "https://rio.andrepaiva.dev",
+        link: "https://rio.squareweb.app/",
       },
     ];
 
@@ -409,30 +409,13 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2 space-y-6">
                 <p className="text-slate-700 leading-relaxed">
-                  Olá, me chamo André! Sou estagiário de desenvolvimento de
-                  software na Warlocks e Diretor de Tecnologia no projeto
-                  DreamTeam. Desde que comecei minha jornada no desenvolvimento,
-                  sempre fui movido pela curiosidade e pela vontade de criar
-                  soluções inovadoras. Meu primeiro contato com a programação
-                  veio através do desejo de desenvolver jogos, e hoje, sigo
-                  expandindo meus conhecimentos em diversas áreas da tecnologia.
+                  Olá, me chamo André! Sou Desenvolvedor Full Stack com experiência em construir aplicações modernas e escaláveis para plataformas como Discord e web. Atualmente, trabalho na Warlocks desenvolvendo o Ginga, um app para gerenciar bolões esportivos, tanto em formato de bot quanto via Discord Activities.
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Atualmente, estou cursando Bacharelado em Ciência e
-                  Tecnologia, pois acredito que a inovação tem o poder de
-                  transformar vidas. Meu maior objetivo é desenvolver soluções
-                  que realmente façam a diferença no mundo, impactando
-                  positivamente a vida das pessoas e tornando a tecnologia mais
-                  acessível e eficiente.
+                  Também sou fundador e CEO da Noyevel, uma startup dedicada à criação de bots e soluções digitais inovadoras para Discord, incluindo projetos como o Rio Bot. Fui cofundador e desenvolvedor principal do DreamTeam, um bot de simulação de futebol para Discord, presente em mais de 65 mil servidores e com 180 mil usuários registrados.
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Além da tecnologia, sou músico e estudo Clarinete no Curso
-                  Técnico em Música da Escola de Música da UFRN. Faço parte da
-                  Orquestra Potiguar de Clarinetas, da Banda Sinfônica da EMUFRN
-                  e da Banda Municipal de São Gonçalo do Amarante. A música me
-                  ensinou disciplina, criatividade e a importância do trabalho
-                  em equipe, valores que levo para minha atuação na tecnologia e
-                  na inovação.
+                  Estou sempre em busca de desenvolver soluções que impactem positivamente a vida das pessoas e tornar a tecnologia mais acessível. Além do universo tech, sou músico e estudo Clarinete no Curso Técnico em Música da Escola de Música da UFRN, integrando grupos como a Orquestra Potiguar de Clarinetas e a Banda Municipal de São Gonçalo do Amarante. A música me ensina disciplina, sensibilidade e trabalho em equipe — valores que levo para cada projeto que abraço.
                 </p>
               </div>
               <div className="lg:col-span-1">
