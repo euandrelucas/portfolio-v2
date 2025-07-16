@@ -88,13 +88,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
+      {/* <head>
         <Script
           defer
           data-domain="andrepaiva.dev"
           src="https://plausible.noyevel.com/js/script.js"
         />
-      </head>
+      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

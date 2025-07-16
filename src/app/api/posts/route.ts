@@ -7,6 +7,7 @@ const POST_FILENAMES = [
   // "colocando-um-ip-adicional-a-uma-vm-lxd.md",
   "como-ter-um-bot-grande.md",
   "experiencia-com-ubuntu.md",
+  "notebook-padrao-ou-chromebook.md",
   "pacote-nao-encontrado.md"
 ];
 
