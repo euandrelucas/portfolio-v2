@@ -91,6 +91,20 @@ export default function Home() {
         image: "/projetos/rio.jpeg",
         link: "https://rio.squareweb.app/",
       },
+      {
+        title: "Sonic Velocity (UFRN Edition)",
+        description:
+          "Desenvolvi um jogo do Sonic utilizando p5.js como parte de um projeto acadêmico para a disciplina de Lógica de Programação na UFRN. O jogo apresenta animações dinâmicas, coleta de anéis e um sistema de pontuação que torna a experiência mais envolvente. O objetivo foi aplicar conceitos de programação e lógica de forma prática, criando um protótipo funcional e interativo.",
+        image: "/projetos/sonic.png",
+        link: "https://sonic.andrepaiva.dev/",
+      },
+      {
+        title: "Discord Experiments",
+        description:
+          "Desenvolvi uma aplicação que lista os experiments dos servidores do Discord, exibindo seus rollouts, tratamentos e overrides atuais. O objetivo é oferecer uma visão clara e organizada das funcionalidades em teste na plataforma, facilitando o acompanhamento das implementações e variações em diferentes servidores.",
+        image: "/projetos/discord.png",
+        link: "https://rollouts.andrepaiva.dev/",
+      },
     ];
 
     setProjects(sampleProjects);
