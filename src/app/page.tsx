@@ -63,27 +63,27 @@ export default function Home() {
         image: "/projetos/ginga.webp",
         link: "https://ginga.gg/",
       },
-      // {
-      //   title: "DreamTeam",
-      //   description:
-      //     "O DreamTeam é um simulador de futebol feito por brasileiros apaixonados por futebol. Com cartas únicas e originais de jogadores e clubes brasileiros, são mais de 1300 cartas colecionáveis (incluindo Pelé, Arrascaeta, Hulk, Ronaldinho e muito mais!) para que você possa fazer o seu time dos sonhos. Então venha em busca de fazer o melhor time do mundo!",
-      //   image: "/projetos/dreamteam.png",
-      //   link: "https://dreamteam.futbol",
-      // },
+      {
+        title: "DreamTeam",
+        description:
+          "O DreamTeam é um simulador de futebol feito por brasileiros apaixonados por futebol. Com cartas únicas e originais de jogadores e clubes brasileiros, são mais de 1300 cartas colecionáveis (incluindo Pelé, Arrascaeta, Hulk, Ronaldinho e muito mais!) para que você possa fazer o seu time dos sonhos. Então venha em busca de fazer o melhor time do mundo!",
+        image: "/projetos/dreamteam.png",
+        link: "https://dreamteam.futbol",
+      },
       {
         title: "Gol Website Remake",
         description:
           "Remake do site do Gol Linhas Aereas, desenvolvido como projeto pessoal para praticar habilidades de front-end e design responsivo.",
         image: "/projetos/gol.jpeg",
-        link: "https://gol.andrepaiva.dev",
+        link: "https://github.com/euandrelucas/gol-website-clone",
       },
-      {
+      /*{
         title: "Website da Noyevel",
         description:
           "Desenvolvi o site institucional da Noyevel, a startup da qual sou CEO e fundador, com o objetivo de apresentar a empresa, nossa visão e os projetos que estamos construindo. O site foi feito com foco em performance, responsividade e uma identidade visual marcante, refletindo o espírito criativo e inovador da Noyevel.",
         image: "/projetos/noyevel.jpeg",
         link: "https://noyevel.com",
-      },
+      },*/
       {
         title: "Website da Rio Bot",
         description:
