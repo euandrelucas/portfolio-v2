@@ -1,10 +1,10 @@
 import type React from "react";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-// import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -88,16 +88,47 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      {/* <head>
-        <Script
-          defer
-          data-domain="andrepaiva.dev"
-          src="https://plausible.noyevel.com/js/script.js"
-        />
-      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script id="openpanel-init" strategy="afterInteractive">
+          {`
+            window.op = window.op || function() {
+              var n = [];
+              return new Proxy(
+                function() {
+                  arguments.length && n.push([].slice.call(arguments));
+                },
+                {
+                  get: function(t, r) {
+                    return "q" === r
+                      ? n
+                      : function() {
+                          n.push([r].concat([].slice.call(arguments)));
+                        };
+                  },
+                  has: function(t, r) {
+                    return "q" === r;
+                  }
+                }
+              );
+            }();
+
+            window.op('init', {
+              apiUrl: 'https://analytics.andrepaiva.dev/api',
+              clientId: '00c21aa8-04df-4efa-a24d-97cf8a521abb',
+              trackScreenViews: true,
+              trackOutgoingLinks: true,
+              trackAttributes: true
+            });
+          `}
+        </Script>
+
+        <Script
+          src="https://openpanel.dev/op1.js"
+          strategy="afterInteractive"
+        />
+
         <Header />
         <div className="pt-16">{children}</div>
         <Footer />
